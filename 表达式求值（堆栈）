@@ -1,0 +1,49 @@
+#表达式求值(不能输入负数）+/*（）
+#堆栈：后入后出
+
+a=input()
+cxc=[]
+cy=[]
+c='0'
+def ys(m,n,t):
+    if (t=='+'):
+        return m+n
+    elif(t=='-'):
+        return m-n
+    elif(t=='*'):
+        return m*n
+    else:
+        return m/n
+    
+for i in a:
+    if '0'<=i<='9':
+        c=c+i
+    elif(len(cy)!=0):
+        if(c!='0'):
+            cxc.append(int(c))
+            c='0'
+        if(i=='('):
+            cy.append(i)
+        elif(i==')'):
+            while(len(cy)>0 and cy[-1]!='(' ):
+                cxc.append(ys(cxc.pop(-2),cxc.pop(-1),cy.pop(-1)))
+            cy.pop(-1)
+        elif(i=='+' or i=='-'):
+            while(len(cy)>0 and cy[-1]!='(' ):
+                cxc.append(ys(cxc.pop(-2),cxc.pop(-1),cy.pop(-1)))
+            cy.append(i)
+        else:
+            while(len(cy)>0 and(cy[-1]=='*' or cy[-1]=='/')):
+                cxc.append(ys(cxc.pop(-2),cxc.pop(-1),cy.pop(-1)))
+            cy.append(i)
+    else:
+        if(c!='0'):
+            cxc.append(int(c))
+            c='0'
+        cy.append(i)
+if c!='0':
+    cxc.append(int(c))
+
+while(len(cy)!=0):
+    cxc.append(ys(cxc.pop(-2),cxc.pop(-1),cy.pop(-1)))
+print(cxc[0])
