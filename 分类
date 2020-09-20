@@ -1,8 +1,8 @@
 logistic 回归：(二分类)
 激活函数：sigmoid（单神经元输出）  
-损失函数：yln(yy)+(1-y)ln(1-yy)
+损失函数：-1/m*sum(Yln(YY)+(1-Y)ln(1-YY))) e.g:y=0 or 1
 
 
 softmax回归：(多分类)(logistic的推广）
 softmax激活函数:exp(Z)/sum(exp(Z))  Z=WX+b  （多神经元输出）
-损失函数：
+损失函数：-1/m*sum(sum(y*ln(yy)))  e.g:y=[0,0,1,0,0]
