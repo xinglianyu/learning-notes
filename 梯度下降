@@ -9,7 +9,7 @@
 指数加权平均：Vt=beta*Vt-1+(1-beta)*datas.t
 
 动量梯度下降法（Momentum）：对梯度进行指数加权平均
-UPW1=beta1*UPW+(1-beta1)*dW  （beta通常取0.9）
+UPW1=beta1*UPW1+(1-beta1)*dW  （beta通常取0.9）
 
 RMsprop（均方根传递）算法：（此时可以使用一个较大的学习率）(0.999)
 UP=beta2*UP+(1-beta2)*(dW**2)   (每个元素的平方）
